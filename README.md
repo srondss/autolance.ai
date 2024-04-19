@@ -1,31 +1,32 @@
-# React + TypeScript + Vite
+# AI Freelancing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+This AI-powered platform abstracts all the complexity that comes with dealing with freelancers through an LLM Agent.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technology Stack
 
-## Expanding the ESLint configuration
+-   **Frontend:** TypeScript & Tailwind CSS with Shadcn UI library
+-   **Backend:** TBD
+-   **Database:** TBD
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Setup
 
-- Configure the top-level `parserOptions` property like this:
+Follow these steps to it set up on your local development environment.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### Backend Setup
+
+TBD
+
+### Frontend Setup
+
+```bash
+# Open a new terminal and navigate to the frontend directory
+cd ai-freelance-platform
+
+# Install npm packages
+npm install
+
+# Start the frontend development server
+npm run dev
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# ai-freelance-platform
