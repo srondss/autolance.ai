@@ -15,7 +15,7 @@ export const ChatInput = () => {
     }, [location.pathname]);
 
     return (
-        <div className="flex items-end h-full w-full gap-2 ">
+        <div className="flex items-end h-full w-full ">
             <Input
                 placeholder="Ask me something..."
                 value={message}

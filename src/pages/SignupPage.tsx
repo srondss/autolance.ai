@@ -1,4 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
 import {
     Form,
     FormControl,
@@ -25,15 +31,14 @@ const formSchema = z.object({
     email: z.string().min(1, "Email is required").email("Invalid email"),
     password: z
         .string()
-        .min(8, "Password are at least 8 characters")
-        .max(20, "Password are not longer than 20 characters"),
+        .min(8, "Password must be at least 8 characters")
+        .max(20, "Password cannot be longer than 20 characters"),
 });
 
-export default function LoginPage() {
+export default function SignupPage() {
     const navigate = useNavigate();
-    const { toast } = useToast();
-
     const [loading, setLoading] = useState(false);
+    const { toast } = useToast();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -47,7 +52,7 @@ export default function LoginPage() {
         setLoading(true);
         try {
             console.log(values);
-            const { data, error } = await supabase.auth.signInWithPassword({
+            const { data, error } = await supabase.auth.signUp({
                 email: values.email,
                 password: values.password,
             });
@@ -60,6 +65,12 @@ export default function LoginPage() {
             }
             console.log(data);
             navigate("/");
+            toast({
+                title: "Check your email!",
+                description:
+                    "We've sent you a verification email. Please verify your email address to login.",
+                variant: "success",
+            });
         } catch (error) {
             toast({
                 title: "Error",
@@ -75,11 +86,16 @@ export default function LoginPage() {
         <div className="w-full h-full flex justify-center items-center">
             <Card className="h-fit max-w-[400px] w-full">
                 <CardHeader className="space-y-1">
-                    <CardTitle className="text-2xl">Login</CardTitle>
+                    <CardTitle className="text-2xl">
+                        Create an account
+                    </CardTitle>
+                    <CardDescription>
+                        Enter your email below to create your account
+                    </CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
                     {
-                        // ADD BACK IN WHEN SOCIAL AUTH IS IMPLEMENTED
+                        // // ADD BACK IN WHEN SOCIAL AUTH IS IMPLEMENTED
                         /* <div className="grid grid-cols-2 gap-6">
                         <Button variant="outline">
                             <Icons.gitHub className="mr-2 h-4 w-4" />
@@ -158,7 +174,7 @@ export default function LoginPage() {
                                     {loading ? (
                                         <Loader className="animate-spin" />
                                     ) : (
-                                        "Login"
+                                        "Create account"
                                     )}
                                 </Button>
                             </div>

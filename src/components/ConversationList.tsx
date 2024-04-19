@@ -15,6 +15,7 @@ export const ConversationList = () => {
                 {conversations?.map((conversation) => (
                     <ScrollShadow
                         orientation="horizontal"
+                        key={conversation.id}
                         className={`${
                             path.pathname.split("/")[2] == conversation.id
                                 ? "bg-muted"

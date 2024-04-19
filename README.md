@@ -7,8 +7,8 @@ This AI-powered platform abstracts all the complexity that comes with dealing wi
 ## Technology Stack
 
 -   **Frontend:** TypeScript & Tailwind CSS with Shadcn UI library
--   **Backend:** TBD
--   **Database:** TBD
+-   **Backend:** Supabase
+-   **Database:** Postgres
 
 ## Project Setup
 
@@ -26,6 +26,10 @@ cd ai-freelance-platform
 
 # Install npm packages
 npm install
+
+# Set up environment variables
+echo "VITE_APP_SUPABASE_KEY=[paste supabase api key here]" > .env
+echo "VITE_APP_SUPABASE_URL=[paste supabase URL here]" >> .env
 
 # Start the frontend development server
 npm run dev
