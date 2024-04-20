@@ -13,7 +13,7 @@ import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader } from "lucide-react";
-import supabase from "@/services/api/api";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -46,21 +46,22 @@ export default function LoginPage() {
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setLoading(true);
         try {
-            console.log(values);
-            const { data, error } = await supabase.auth.signInWithPassword({
-                email: values.email,
-                password: values.password,
-            });
-            if (error) {
-                form.setError("root", {
-                    type: "manual",
-                    message: error.message,
-                });
-                throw new Error(error.message);
-            }
-            console.log(data);
+            const response = await axios.post(
+                "http://localhost:3000/auth/login",
+                {
+                    email: values.email,
+                    password: values.password,
+                }
+            );
+
+            const token = response.data.accessToken;
+            localStorage.setItem("accessToken", token);
+
             navigate("/");
-        } catch (error) {
+        } catch (error: any) {
+            form.setError("root", {
+                message: error.response.data.error,
+            });
             toast({
                 title: "Error",
                 description: "An error occurred. Please try again.",

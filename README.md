@@ -14,10 +14,6 @@ This AI-powered platform abstracts all the complexity that comes with dealing wi
 
 Follow these steps to it set up on your local development environment.
 
-### Backend Setup
-
-TBD
-
 ### Frontend Setup
 
 ```bash
@@ -26,10 +22,6 @@ cd ai-freelance-platform
 
 # Install npm packages
 npm install
-
-# Set up environment variables
-echo "VITE_APP_SUPABASE_KEY=[paste supabase api key here]" > .env
-echo "VITE_APP_SUPABASE_URL=[paste supabase URL here]" >> .env
 
 # Start the frontend development server
 npm run dev

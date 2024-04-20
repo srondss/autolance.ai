@@ -19,7 +19,7 @@ import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader } from "lucide-react";
-import supabase from "@/services/api/api";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -52,18 +52,10 @@ export default function SignupPage() {
         setLoading(true);
         try {
             console.log(values);
-            const { data, error } = await supabase.auth.signUp({
+            await axios.post("http://localhost:3000/auth/signup", {
                 email: values.email,
                 password: values.password,
             });
-            if (error) {
-                form.setError("root", {
-                    type: "manual",
-                    message: error.message,
-                });
-                throw new Error(error.message);
-            }
-            console.log(data);
             navigate("/");
             toast({
                 title: "Check your email!",
@@ -71,7 +63,11 @@ export default function SignupPage() {
                     "We've sent you a verification email. Please verify your email address to login.",
                 variant: "success",
             });
-        } catch (error) {
+        } catch (error: any) {
+            form.setError("root", {
+                type: "manual",
+                message: error.message,
+            });
             toast({
                 title: "Error",
                 description: "An error occurred. Please try again.",

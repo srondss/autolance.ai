@@ -11,8 +11,6 @@ export default function Chat() {
 
     const conversation = useChat({ id: path?.pathname.split("/")[2] });
 
-    console.log(conversation);
-
     return (
         <div className="flex flex-col w-full h-[6000px] overflow-auto ">
             <ScrollShadow orientation="vertical" className="h-full">
@@ -27,8 +25,8 @@ export default function Chat() {
                                 <div className="flex flex-col gap-2 items-center">
                                     <Logo />
                                     <p className="text-sm md:text-xl">
-                                        What type of service are you looking
-                                        for?
+                                        Meet Giggy AI, your personal assistant
+                                        for all your freelance needs.
                                     </p>
                                 </div>
                             </motion.div>
@@ -41,12 +39,12 @@ export default function Chat() {
                             transition={{ duration: 1, ease: "easeOut" }}
                         >
                             {conversation?.chatHistory?.map((message) => (
-                                <div key={message.id} className={`pt-4 pb-4`}>
-                                    <div
-                                        key={message.id}
-                                        className={`flex gap-2`}
-                                    >
-                                        {message.author === "user" ? (
+                                <div
+                                    key={message.message_id}
+                                    className={`pt-4 pb-4`}
+                                >
+                                    <div className={`flex gap-2`}>
+                                        {message.from === "user" ? (
                                             <Avatar className="h-[32px] w-[32px]">
                                                 <AvatarImage
                                                     src="https://github.com/shadcn.png"
@@ -61,9 +59,9 @@ export default function Chat() {
                                         )}
                                         <div className="flex flex-col items-center justify-center">
                                             <span className="font-semibold">
-                                                {message.author === "user"
+                                                {message.from === "user"
                                                     ? "You"
-                                                    : "AI Fiverr"}
+                                                    : "Giggy"}
                                             </span>
                                         </div>
                                     </div>

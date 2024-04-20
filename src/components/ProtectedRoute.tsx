@@ -4,8 +4,6 @@ import { useAuth } from "@/hooks/useAuth";
 export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     const { isAuthenticated, loading } = useAuth();
 
-    console.log("hello");
-
     // If not loading, check authentication
     if (!loading) {
         // If authenticated, render children, otherwise redirect to login
