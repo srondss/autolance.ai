@@ -15,9 +15,7 @@ import {
 } from "@/components/ui/form";
 
 import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Loader } from "lucide-react";
 import axios from "axios";
 import { useForm } from "react-hook-form";

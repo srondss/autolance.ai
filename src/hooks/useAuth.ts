@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 
 import { UserData } from "@/types/UserData";
 import { jwtDecode } from "jwt-decode";
+import { useLocation } from "react-router-dom";
 import useUserSessionStore from "@/services/state/useUserSessionStore";
 
 export const useAuth = () => {
@@ -12,7 +12,6 @@ export const useAuth = () => {
     const [loading, setLoading] = useState(true);
 
     const location = useLocation();
-    const navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.clear();
