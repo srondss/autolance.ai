@@ -111,7 +111,7 @@ export const ChatInput = ({ loading, setLoading }: ChatInputProps) => {
             <Input
                 placeholder={
                     !isAuthenticated
-                        ? "Login to start finding freelancers or clients"
+                        ? "Sign up to start finding freelancers or clients"
                         : projectExistsForChat
                         ? "This chat has been moved to a project and is read-only."
                         : isOnProjectPage
@@ -128,7 +128,9 @@ export const ChatInput = ({ loading, setLoading }: ChatInputProps) => {
                         onSendMessage();
                     }
                 }}
-                onClick={isAuthenticated ? undefined : () => navigate("/login")}
+                onClick={
+                    isAuthenticated ? undefined : () => navigate("/register")
+                }
                 disabled={projectExistsForChat || isOnProjectPage}
             />
             <Button
