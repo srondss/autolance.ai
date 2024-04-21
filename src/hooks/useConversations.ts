@@ -17,7 +17,7 @@ export const useConversations = () => {
             const token = localStorage.getItem("accessToken");
 
             const response = await axios.get(
-                "http://localhost:3000/chat/conversations",
+                "https://ai-freelance-be.onrender.com/chat/conversations",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,

@@ -27,11 +27,14 @@ export const useChat = ({ id }: ChatProps) => {
     const getChatMessages = async (id: string) => {
         const token = localStorage.getItem("accessToken");
 
-        const response = await axios.get(`http://localhost:3000/chat/${id}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const response = await axios.get(
+            `https://ai-freelance-be.onrender.com/chat/${id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
 
         return response.data as Message[];
     };

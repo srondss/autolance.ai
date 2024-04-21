@@ -52,10 +52,13 @@ export default function SignupPage() {
         setLoading(true);
         try {
             console.log(values);
-            await axios.post("http://localhost:3000/auth/signup", {
-                email: values.email,
-                password: values.password,
-            });
+            await axios.post(
+                "https://ai-freelance-be.onrender.com/auth/signup",
+                {
+                    email: values.email,
+                    password: values.password,
+                }
+            );
             navigate("/");
             toast({
                 title: "Check your email!",

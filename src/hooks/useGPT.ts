@@ -10,7 +10,7 @@ export const useGPT = () => {
         const formattedMessages = formatForGPT(chatHistory);
 
         const response = await axios.post(
-            `http://localhost:3000/chat/${conversationId}`,
+            `https://ai-freelance-be.onrender.com/chat/${conversationId}`,
             {
                 conversationId: conversationId,
                 chatHistory: formattedMessages,

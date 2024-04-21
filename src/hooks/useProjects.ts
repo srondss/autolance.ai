@@ -16,11 +16,14 @@ export const useProjects = () => {
         queryFn: async () => {
             const token = localStorage.getItem("accessToken");
 
-            const response = await axios.get("http://localhost:3000/projects", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+            const response = await axios.get(
+                "https://ai-freelance-be.onrender.com/projects",
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
 
             console.log(response.data);
 
