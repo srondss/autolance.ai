@@ -3,10 +3,15 @@ import Chat from "./Chat";
 import { ChatInput } from "./ChatInput";
 import { ConversationList } from "./ConversationList";
 import { Edit } from "lucide-react";
+import { ProjectList } from "./ProjectList";
+import { Separator } from "./ui/separator";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function ChatInterface() {
     const navigate = useNavigate();
+
+    const [loading, setLoading] = useState(false);
 
     return (
         <div className="w-full h-full flex">
@@ -19,13 +24,17 @@ export default function ChatInterface() {
                             className="cursor-pointer "
                         />
                     </div>
+                    <Separator />
                     <ConversationList />
+                    <h2 className="font-semibold text-lg">Projects</h2>
+                    <Separator />
+                    <ProjectList />
                 </div>
             </Card>
             <Card className="w-full rounded-none h-full">
                 <div className="flex flex-col h-full items-center justify-center p-6">
-                    <Chat />
-                    <ChatInput />
+                    <Chat loading={loading} />
+                    <ChatInput loading={loading} setLoading={setLoading} />
                 </div>
             </Card>
         </div>

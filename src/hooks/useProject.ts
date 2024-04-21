@@ -1,23 +1,27 @@
-import { Conversation } from "@/types/Conversation";
+import { Project } from "@/types/Project";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+
+interface ProjectProps {
+    id: string;
+}
 
 /*
 Makes an api call to the backend and return the list of conversations.
 */
-export const useConversations = () => {
+export const useProject = ({ id }: ProjectProps) => {
     const {
-        data: conversations,
+        data: project,
         isError,
         isLoading,
-        refetch: refetchConversationsList,
+        refetch: refetchProject,
     } = useQuery({
-        queryKey: ["conversations"],
+        queryKey: ["project", id],
         queryFn: async () => {
             const token = localStorage.getItem("accessToken");
 
             const response = await axios.get(
-                "http://localhost:3000/chat/conversations",
+                "http://localhost:3000/projects/" + id,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -25,13 +29,13 @@ export const useConversations = () => {
                 }
             );
 
-            console.log("Conversations from useConversations", response.data);
+            console.log("Response Project: ", response.data);
 
-            return response.data as Conversation[];
+            return response.data as Project;
         },
         refetchOnWindowFocus: false,
         retry: false,
     });
 
-    return { conversations, isError, isLoading, refetchConversationsList };
+    return { project, isError, isLoading, refetchProject };
 };

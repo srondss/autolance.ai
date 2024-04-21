@@ -3,14 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { Loader } from "lucide-react";
 import { ScrollArea } from "./ui/scroll-area";
 import { ScrollShadow } from "@nextui-org/react";
-import { useConversations } from "@/hooks/useConversations";
+import { useProjects } from "@/hooks/useProjects";
 
-export const ConversationList = () => {
-    const { conversations, isLoading, isError } = useConversations();
+export const ProjectList = () => {
+    const { projects, isLoading, isError } = useProjects();
 
     const path = useLocation();
-
-    console.log("conversations", conversations, isError);
 
     return (
         <ScrollArea className="flex flex-col h-full">
@@ -22,24 +20,24 @@ export const ConversationList = () => {
                 )}
 
                 {!isError &&
-                    conversations?.map((conversation) => (
+                    projects?.map((project) => (
                         <ScrollShadow
                             orientation="horizontal"
-                            key={conversation.conversation_id}
+                            key={project.project_id}
                             className={`${
                                 path.pathname.split("/")[2] ==
-                                conversation.conversation_id
+                                project.project_id
                                     ? "bg-muted"
                                     : ""
                             } w-full max-w-[100px] md:max-w-[210px] hover:bg-muted transition-colors pt-2 pb-2 rounded-lg cursor-pointer`}
                         >
                             <Link
-                                key={conversation.conversation_id}
-                                to={`/chat/${conversation.conversation_id}`}
+                                key={project.project_id}
+                                to={`/project/${project.project_id}`}
                                 className="h-full rounded-lg text-sm"
                             >
                                 <p className="w-[500px] ml-[-1px] pl-3 ">
-                                    {conversation.summary}
+                                    {project.title}
                                 </p>
                             </Link>
                         </ScrollShadow>

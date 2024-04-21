@@ -18,10 +18,6 @@ export const useAuth = () => {
         localStorage.clear();
         setIsAuthenticated(false);
         setUser(undefined);
-        const path = location.pathname.split("/")[1];
-        if (path !== "login" && path !== "register") {
-            navigate("/login");
-        }
     };
 
     useEffect(() => {

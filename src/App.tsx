@@ -10,6 +10,10 @@ import SignupPage from "./pages/SignupPage";
 import { ThemeProvider } from "./services/providers/ThemeProvider";
 import { Toaster } from "./components/ui/toaster";
 
+// TODO: AI One question at a time.
+// TODO: After 5 prompts, request to sign up. (store prompts in local storage)
+// TODO: Clean up ai text
+
 function App() {
     const queryClient = new QueryClient();
 
@@ -20,15 +24,23 @@ function App() {
                     <main className="sm:px-10 px-5 h-full">
                         <Navbar />
                         <Routes>
+                            <Route path="/" element={<HomePage />} />
                             <Route
-                                path="/"
+                                path="/chat/:id"
                                 element={
                                     <ProtectedRoute>
                                         <HomePage />
                                     </ProtectedRoute>
                                 }
                             />
-                            <Route path="/chat/:id" element={<HomePage />} />
+                            <Route
+                                path="/project/:id"
+                                element={
+                                    <ProtectedRoute>
+                                        <HomePage />
+                                    </ProtectedRoute>
+                                }
+                            />
                             <Route
                                 path="/login"
                                 element={

@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./ui/ModeToggle";
+import { NamedLogoWithLink } from "./Logo";
 import UserAvatar from "./UserAvatar";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -13,6 +14,7 @@ export default function HeroNav() {
     return (
         <header className="sticky border-b top-0 flex h-16 items-center gap-4 bg-background px-4 md:px-6">
             <nav className="hidden flex-col gap-6 text-lg font-medium w-full md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+                <NamedLogoWithLink />
                 {isAuthenticated && <div className="flex w-full gap-4"></div>}
                 <div className="flex ml-auto gap-4 items-center">
                     <ModeToggle />
