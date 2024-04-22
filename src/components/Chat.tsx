@@ -45,17 +45,16 @@ export default function Chat({ loading }: ChatProps) {
                                 transition={{ duration: 1.5 }}
                             >
                                 <div className="flex flex-col gap-2 items-center">
-                                    <Logo height="150" width="150" />
+                                    <Logo height="200" width="340" />
                                     {loading ? (
                                         <Loader
                                             className="animate-spin"
-                                            size={32}
+                                            size={36}
                                         />
                                     ) : (
-                                        <p className="text-sm md:text-xl">
-                                            Meet Autolance AI, your personal
-                                            assistant for all your freelance
-                                            needs.
+                                        <p className="text-xl font-bold uppercase">
+                                            Meet Autolance AI 🤖, your personal
+                                            agent to get you FREELANCERS👩🏿‍💻 OR CLIENTS👨🏻‍💼!
                                         </p>
                                     )}
                                 </div>
