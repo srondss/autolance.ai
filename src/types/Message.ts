@@ -8,3 +8,8 @@ export type Message = {
 };
 
 export type SentFrom = "user" | "assistant";
+
+export type GroqMessage = {
+    role: string;
+    content: string;
+  };
