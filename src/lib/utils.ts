@@ -1,6 +1,7 @@
 import { Message } from "@/types/Message";
 import { type ClassValue, clsx } from "clsx";
-import { GroqMessage } from "@/types/Message";
+// import { GroqMessage } from "@/types/Message";
+import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 import { twMerge } from "tailwind-merge";
 
 
@@ -52,7 +53,5 @@ export function formatForGPT(chatHistory: Message[] | undefined) {
 
     // return processedMessages;
 
-    return formattedHistory as GroqMessage[];
+    return formattedHistory as ChatCompletionMessageParam[];;
 }
-
-
